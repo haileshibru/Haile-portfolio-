@@ -21,7 +21,9 @@ import {
   ArrowRight,
   ChevronRight,
   ExternalLink,
-  Layers
+  Layers,
+  FileText,
+  Download
 } from 'lucide-react';
 
 // --- Types ---
@@ -44,6 +46,9 @@ interface Project {
   category: string;
   description: string;
   image: string;
+  link?: string;
+  github?: string;
+  tags?: string[];
 }
 
 // --- Data ---
@@ -51,7 +56,7 @@ interface Project {
 const EXPERIENCE: ExperienceItem[] = [
   {
     title: "IT Instructor",
-    company: "Higher Education Institution",
+    company: "Debub Ethiopia College",
     period: "Present",
     description: [
       "Deliver networking and programming courses to degree and diploma students",
@@ -72,7 +77,7 @@ const EXPERIENCE: ExperienceItem[] = [
   },
   {
     title: "GPS Technician",
-    company: "Technical Services",
+    company: "Technical Fleet Solutions",
     period: "6+ Months",
     description: [
       "Installed vehicle tracking systems in diverse fleet environments",
@@ -117,22 +122,34 @@ const COMPETENCIES: Competency[] = [
 
 const PROJECTS: Project[] = [
   {
+    title: "Professional Hub – Career & Platform",
+    category: "Service Platform",
+    description: "Bilingual (English & Amharic) platform offering 8 professional services including CV writing, LinkedIn optimization, tutoring, and AI proficiency coaching.",
+    image: "https://i.postimg.cc/QHy0MfPs/Screenshot-2.png",
+    link: "https://professional-hub-two.vercel.app/",
+    github: "https://github.com/haile199105/Professional-Hub",
+    tags: ["React", "TypeScript", "Vercel"]
+  },
+  {
     title: "Network Configuration Lab Setup",
     category: "Infrastructure",
     description: "Designed and implemented a scalable network lab environment for student training, featuring VLANs and secure routing.",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop",
+    tags: ["Cisco", "VLANs", "Routing"]
   },
   {
     title: "Flutter-Based Mobile Application",
     category: "Mobile Dev",
     description: "Developed a cross-platform mobile solution integrated with Firebase for real-time data synchronization.",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
+    tags: ["Flutter", "Firebase", "Dart"]
   },
   {
     title: "GPS Installation & Tracking Workflow",
     category: "Field Tech",
     description: "Streamlined the installation and tracking process for vehicle GPS units, improving data accuracy by 40%.",
-    image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop",
+    tags: ["GPS Hardware", "Field Ops", "Excel"]
   }
 ];
 
@@ -322,14 +339,23 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <motion.div 
-                  initial={{ opacity: 0, x: -10 }}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-electric-blue/10 border border-electric-blue/20 text-electric-blue text-xs font-mono mb-6"
+                  className="mb-6 flex items-center gap-6"
                 >
-                  <span className="w-2 h-2 rounded-full bg-electric-blue animate-pulse" />
-                  AVAILABLE FOR NEW SYSTEMS
+                  <div className="w-20 h-20 rounded-full border-2 border-electric-blue/50 flex items-center justify-center p-1 overflow-hidden relative shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                    <img 
+                      src="https://i.postimg.cc/VL9NWQNY/image-3.jpg" 
+                      alt="Haile Shibru" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-electric-blue font-mono text-xs tracking-[0.5em] uppercase mb-2">Systems Professional</span>
+                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase whitespace-nowrap">Haile Shibru</h2>
+                  </div>
                 </motion.div>
                 <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
                   Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-500">Reliable</span> Networks<span className="text-electric-blue">.</span>
@@ -350,8 +376,19 @@ export default function App() {
                   <motion.a 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href="#experience"
+                    href="https://drive.google.com/file/d/1nVvOSccMhEoKfG2mo2Mv05WKQmQ4Z18X/view?usp=drivesdk"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold transition-all duration-300 border border-white/10 flex items-center gap-2"
+                  >
+                    <FileText className="w-5 h-5 text-electric-blue" />
+                    Download CV
+                  </motion.a>
+                  <motion.a 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#experience"
+                    className="px-8 py-4 bg-white/5 hover:bg-white/10 text-zinc-400 rounded-xl font-bold transition-all duration-300 border border-white/10 flex items-center gap-2"
                   >
                     <Layers className="w-5 h-5" />
                     Stack.log
@@ -382,6 +419,26 @@ export default function App() {
                 className="relative"
               >
                 <SectionTitle subtitle="00. IDENTITY">IT Instructor & Developer</SectionTitle>
+                
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="mb-8 relative z-10"
+                >
+                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full p-2 border-2 border-electric-blue/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] overflow-hidden relative group">
+                    <img 
+                      src="https://i.postimg.cc/VL9NWQNY/image-3.jpg" 
+                      alt="Haile Shibru" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[10px] font-mono text-white text-center px-4">Professional Identity Verified</span>
+                    </div>
+                  </div>
+                </motion.div>
+
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 0.02, x: 0 }}
@@ -421,10 +478,30 @@ export default function App() {
                     transition={{ delay: 0.1 }}
                     className="flex flex-col"
                   >
-                    <span className="text-white font-bold text-2xl">CS Graduate</span>
-                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</span>
+                    <span className="text-white font-bold text-xl leading-tight">Debre Tabor University</span>
+                    <span className="text-sm font-light text-zinc-400 block">CS Graduate - Class of 2025</span>
+                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">Education</span>
                   </motion.div>
                 </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="pt-8"
+                >
+                  <motion.a 
+                    whileHover={{ x: 5 }}
+                    href="https://drive.google.com/file/d/1nVvOSccMhEoKfG2mo2Mv05WKQmQ4Z18X/view?usp=drivesdk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-electric-blue font-mono text-sm uppercase tracking-widest border-b border-electric-blue/30 pb-1 hover:border-electric-blue transition-all"
+                  >
+                    <Download className="w-4 h-4" />
+                    Preview Professional CV
+                  </motion.a>
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -555,9 +632,14 @@ export default function App() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
-                    <div className="absolute top-4 right-4 p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ExternalLink className="w-4 h-4 text-white" />
-                    </div>
+                    <a 
+                      href={project.link || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-electric-blue hover:text-white"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
                   <div className="p-8">
                     <div className="flex items-center gap-2 mb-3">
@@ -572,9 +654,23 @@ export default function App() {
                     <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
                       {project.description}
                     </p>
-                    <div className="flex items-center gap-2 text-xs font-mono text-electric-blue opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                      EXECUTE_PROJECT <ArrowRight className="w-3 h-3" />
-                    </div>
+                    {project.tags && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tags.map((tag, i) => (
+                          <span key={i} className="px-2 py-0.5 rounded bg-electric-blue/5 border border-electric-blue/20 text-[9px] font-mono text-electric-blue uppercase tracking-wider">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <a 
+                      href={project.link || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs font-mono text-electric-blue opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0"
+                    >
+                      {project.link ? 'Live Demo' : 'View Project'} <ArrowRight className="w-3 h-3" />
+                    </a>
                   </div>
                 </motion.div>
               ))}
@@ -590,9 +686,9 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
               {[
-                { val: "01+", label: "Year Teaching Experience" },
-                { val: "06+", label: "Months Field GPS Experience" },
-                { val: "Multiple", label: "Network Configurations" }
+                { val: "100+", label: "Students Taught" },
+                { val: "50+", label: "GPS Units Installed" },
+                { val: "3+", label: "Projects Deployed" }
               ].map((metric, i) => (
                 <motion.div
                   key={i}
@@ -635,9 +731,9 @@ export default function App() {
                     <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
                       <Mail className="w-8 h-8 text-electric-blue" />
                     </div>
-                    <div className="text-left">
+                    <div className="text-left overflow-hidden">
                       <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Email.protocol</div>
-                      <div className="font-bold text-lg">haileyesusshibru19@gmail.com</div>
+                      <div className="font-bold text-lg break-all">haileyesusshibru19@gmail.com</div>
                     </div>
                   </motion.a>
                   
@@ -655,12 +751,46 @@ export default function App() {
                       <div className="font-bold text-lg">+251 933 615 101</div>
                     </div>
                   </motion.a>
+
+                  <motion.a 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="https://www.linkedin.com/in/haile-shibru-763418327"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
+                  >
+                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
+                      <Linkedin className="w-8 h-8 text-electric-blue" />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Social.link</div>
+                      <div className="font-bold text-lg">LinkedIn Profile</div>
+                    </div>
+                  </motion.a>
+
+                  <motion.a 
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="https://github.com/haile199105"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
+                  >
+                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
+                      <Github className="w-8 h-8 text-electric-blue" />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Code.repo</div>
+                      <div className="font-bold text-lg">GitHub Profile</div>
+                    </div>
+                  </motion.a>
                 </div>
 
                 <div className="flex justify-center gap-8 mt-16">
                   {[
-                    { icon: <Linkedin />, url: "https://www.linkedin.com/in/haile-shibru-763418327" ,label: "LinkedIn" },
-                    { icon: <Github />, url: "https://github.com/haileshibru", label: "GitHub" }
+                    { icon: <Linkedin />, url: "https://www.linkedin.com/in/haile-shibru-763418327", label: "LinkedIn" },
+                    { icon: <Github />, url: "https://github.com/haile199105", label: "GitHub" }
                   ].map((social, i) => (
                     <motion.a 
                       key={i}
