@@ -23,8 +23,16 @@ import {
   ExternalLink,
   Layers,
   FileText,
-  Download
+  Download,
+  CheckCircle2,
+  Sparkles,
+  ChevronDown
 } from 'lucide-react';
+
+import { ProjectSection } from './components/projects/ProjectSection';
+import { ImpactMetrics } from './components/bottom/ImpactMetrics';
+import { ContactSection } from './components/bottom/ContactSection';
+import { FooterSection } from './components/bottom/FooterSection';
 
 // --- Types ---
 
@@ -39,16 +47,7 @@ interface Competency {
   title: string;
   icon: React.ReactNode;
   tags: string[];
-}
-
-interface Project {
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  link?: string;
-  github?: string;
-  tags?: string[];
+  featured?: boolean;
 }
 
 // --- Data ---
@@ -59,9 +58,9 @@ const EXPERIENCE: ExperienceItem[] = [
     company: "Debub Ethiopia College",
     period: "Present",
     description: [
-      "Deliver networking and programming courses to degree and diploma students",
-      "Guide practical lab sessions for hands-on technical skill development",
-      "Prepare comprehensive technical training materials and assessments"
+      "Deliver networking, hardware, and programming curriculum to diploma and degree candidates",
+      "Lead practical laboratory sessions for real-world switch/router configuration and cabling",
+      "Design comprehensive technical evaluations, coursework, and assessment frameworks"
     ]
   },
   {
@@ -69,10 +68,10 @@ const EXPERIENCE: ExperienceItem[] = [
     company: "Koye Feche Sub-city Science & Technology Bureau",
     period: "6 Months",
     description: [
-      "Configured routers and switches for local network infrastructure",
-      "Implemented firewall setups to ensure network security",
-      "Provided server and database support for bureau operations",
-      "Resolved complex technical troubleshooting issues"
+      "Configured managed switches and Cisco routers for municipal departmental networks",
+      "Implemented enterprise firewall rules and gateway security policies",
+      "Administered local database systems and provided on-site workstation support",
+      "Resolved mission-critical network bottlenecks and troubleshooting tickets"
     ]
   },
   {
@@ -80,9 +79,9 @@ const EXPERIENCE: ExperienceItem[] = [
     company: "Technical Fleet Solutions",
     period: "6+ Months",
     description: [
-      "Installed vehicle tracking systems in diverse fleet environments",
-      "Diagnosed connectivity and hardware issues in the field",
-      "Managed installation data using Excel and Google Sheets for reporting"
+      "Installed and tested telematics and GPS tracking units across commercial fleet vehicles",
+      "Diagnosed hardware failures, cellular antenna issues, and power harness connections",
+      "Maintained structured inventory and telemetry diagnostic logs"
     ]
   }
 ];
@@ -90,114 +89,81 @@ const EXPERIENCE: ExperienceItem[] = [
 const COMPETENCIES: Competency[] = [
   {
     title: "Networking & Infrastructure",
-    icon: <Network className="w-6 h-6 text-electric-blue" />,
-    tags: ["Cisco", "Routing", "Switching", "Firewalls", "TCP/IP"]
+    icon: <Network className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["Cisco IOS", "Routing", "Switching", "Firewalls", "TCP/IP"],
+    featured: true
   },
   {
-    title: "Programming",
-    icon: <Code2 className="w-6 h-6 text-electric-blue" />,
-    tags: ["Python", "Java", "C++", "JavaScript"]
+    title: "Full-Stack Development",
+    icon: <Code2 className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["React", "TypeScript", "Node.js", "Tailwind CSS", "Express"]
   },
   {
-    title: "Mobile Development",
-    icon: <Smartphone className="w-6 h-6 text-electric-blue" />,
-    tags: ["Flutter", "Firebase", "Dart", "UI/UX"]
+    title: "Mobile & Cloud Apps",
+    icon: <Smartphone className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["Flutter", "Firebase", "Supabase", "REST APIs"]
   },
   {
-    title: "IT Support & Troubleshooting",
-    icon: <Wrench className="w-6 h-6 text-electric-blue" />,
-    tags: ["Hardware", "OS Support", "Diagnostics", "Maintenance"]
+    title: "IT Systems & Lab Training",
+    icon: <BookOpen className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["Curriculum", "Lab Practicals", "Linux", "Hardware"]
   },
   {
-    title: "Field Technical Installation",
-    icon: <MapPin className="w-6 h-6 text-electric-blue" />,
-    tags: ["GPS Systems", "Hardware Integration", "Field Ops"]
+    title: "Telematics & Hardware",
+    icon: <Cpu className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["GPS Telematics", "Fleet Hardware", "Diagnostics"]
   },
   {
-    title: "Data Handling",
-    icon: <Database className="w-6 h-6 text-electric-blue" />,
-    tags: ["Excel", "Google Sheets", "Data Analysis", "Reporting"]
+    title: "Data & Systems Support",
+    icon: <Database className="w-6 h-6 text-[#ff5500]" />,
+    tags: ["Excel Analytics", "SQL", "Diagnostics", "Maintenance"]
   }
 ];
 
-const PROJECTS: Project[] = [
-  {
-    title: "Professional Hub – Career & Platform",
-    category: "Service Platform",
-    description: "Bilingual (English & Amharic) platform offering 8 professional services including CV writing, LinkedIn optimization, tutoring, and AI proficiency coaching.",
-    image: "https://i.postimg.cc/QHy0MfPs/Screenshot-2.png",
-    link: "https://professional-hub-two.vercel.app/",
-    github: "https://github.com/haile199105/Professional-Hub",
-    tags: ["React", "TypeScript", "Vercel"]
-  },
-  {
-    title: "Network Configuration Lab Setup",
-    category: "Infrastructure",
-    description: "Designed and implemented a scalable network lab environment for student training, featuring VLANs and secure routing.",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop",
-    tags: ["Cisco", "VLANs", "Routing"]
-  },
-  {
-    title: "Flutter-Based Mobile Application",
-    category: "Mobile Dev",
-    description: "Developed a cross-platform mobile solution integrated with Firebase for real-time data synchronization.",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
-    tags: ["Flutter", "Firebase", "Dart"]
-  },
-  {
-    title: "GPS Installation & Tracking Workflow",
-    category: "Field Tech",
-    description: "Streamlined the installation and tracking process for vehicle GPS units, improving data accuracy by 40%.",
-    image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop",
-    tags: ["GPS Hardware", "Field Ops", "Excel"]
-  }
+const SKILL_BARS = [
+  { label: "Networking & Cisco Infrastructure", percentage: 95 },
+  { label: "Full-Stack Web Development (React / TS)", percentage: 90 },
+  { label: "IT Instruction & Practical Lab Training", percentage: 95 },
+  { label: "GPS Telematics & Field Hardware", percentage: 88 },
+  { label: "Database & Cloud Architecture (Firebase / SQL)", percentage: 85 }
 ];
 
 const TECH_STACK = [
-  { name: "Cisco IOS", category: "IT" },
-  { name: "Python", category: "Dev" },
-  { name: "React", category: "Dev" },
-  { name: "Firebase", category: "Dev" },
-  { name: "Linux", category: "IT" },
-  { name: "Flutter", category: "Dev" },
-  { name: "Wireshark", category: "IT" },
-  { name: "Docker", category: "IT/Dev" },
-  { name: "TypeScript", category: "Dev" },
-  { name: "SQL", category: "Dev" },
+  { name: "Cisco IOS", category: "Network" },
+  { name: "React", category: "Frontend" },
+  { name: "TypeScript", category: "Language" },
+  { name: "Python", category: "Language" },
+  { name: "Firebase", category: "Cloud" },
+  { name: "Supabase", category: "Database" },
+  { name: "Linux / Ubuntu", category: "SysAdmin" },
+  { name: "Flutter", category: "Mobile" },
+  { name: "Tailwind CSS", category: "UI" },
+  { name: "Docker", category: "DevOps" },
+  { name: "Wireshark", category: "Security" },
+  { name: "Node.js", category: "Backend" },
 ];
 
-// --- Components ---
+// --- Sub-components ---
 
 const Logo = () => (
-  <motion.div 
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    className="flex items-center gap-2 group cursor-pointer"
-  >
-    <div className="relative">
-      <div className="w-10 h-10 bg-electric-blue rounded-xl flex items-center justify-center text-white font-black text-lg shadow-lg shadow-electric-blue/20 group-hover:rotate-12 transition-transform duration-300">
-        H
-      </div>
-      <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-lg flex items-center justify-center text-charcoal font-black text-[10px] border-2 border-charcoal">
-        S
-      </div>
+  <a href="#" className="flex items-center gap-2 group cursor-pointer">
+    <div className="flex items-center font-black tracking-tight text-2xl">
+      <span className="text-white">Haile</span>
+      <span className="text-[#ff5500] group-hover:scale-125 transition-transform">.</span>
+      <span className="text-zinc-500 font-normal text-sm ml-1 font-mono tracking-widest uppercase hidden sm:inline">Shibru</span>
     </div>
-    <div className="flex flex-col leading-none">
-      <span className="text-white font-black tracking-tighter text-xl">SHIBRU</span>
-      <span className="text-electric-blue font-mono text-[10px] tracking-[0.2em] uppercase">Systems</span>
-    </div>
-  </motion.div>
+  </a>
 );
 
 const TechMarquee = () => (
-  <div className="py-12 border-y border-white/5 bg-zinc-900/40 overflow-hidden relative">
+  <div className="py-8 border-y border-white/5 bg-[#0d0d0f] overflow-hidden relative">
     <div className="flex gap-12 animate-marquee whitespace-nowrap">
       {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
         <div key={i} className="flex items-center gap-3">
-          <span className="text-2xl font-black text-white/20 hover:text-electric-blue transition-colors cursor-default">
+          <span className="text-xl font-bold text-zinc-400 hover:text-[#ff5500] transition-colors cursor-default">
             {tech.name}
           </span>
-          <span className="text-[10px] font-mono text-zinc-600 border border-white/10 px-2 py-0.5 rounded uppercase">
+          <span className="text-[10px] font-mono text-[#ff5500] bg-[#ff5500]/10 border border-[#ff5500]/20 px-2 py-0.5 rounded uppercase font-semibold">
             {tech.category}
           </span>
         </div>
@@ -206,71 +172,32 @@ const TechMarquee = () => (
   </div>
 );
 
-const Terminal = () => {
-  const [text, setText] = useState('');
-  const fullText = '> system.init()\n> loading_modules...\n> network_status: optimal\n> instructor_mode: active\n> developer_mode: enabled\n> welcome_haile_shibru';
-
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setText(fullText.slice(0, i));
-      i++;
-      if (i > fullText.length) clearInterval(interval);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-      className="terminal-window rounded-xl overflow-hidden font-mono text-sm p-4 scanline relative"
-    >
-      <div className="flex gap-2 mb-4 border-b border-white/10 pb-2">
-        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-        <div className="w-3 h-3 rounded-full bg-green-500/50" />
-      </div>
-      <div className="code-text whitespace-pre-wrap min-h-[120px]">
-        {text}
-        <span className="animate-pulse">_</span>
-      </div>
-    </motion.div>
-  );
-};
-
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode, subtitle?: string }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="mb-12"
-  >
+  <div className="mb-10">
     {subtitle && (
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-3">
         <motion.div 
           initial={{ width: 0 }}
-          whileInView={{ width: 32 }}
+          whileInView={{ width: 28 }}
           viewport={{ once: true }}
-          className="h-[1px] bg-electric-blue" 
+          className="h-[2px] bg-[#ff5500]" 
         />
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-electric-blue block">
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#ff5500] font-bold block">
           {subtitle}
         </span>
       </div>
     )}
-    <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+    <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white">
       {children}
     </h2>
-  </motion.div>
+  </div>
 );
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -279,304 +206,290 @@ export default function App() {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToProjects = () => {
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen bg-charcoal selection:bg-electric-blue/30 selection:text-white relative">
-      {/* Tech Background Elements */}
+    <div className="min-h-screen bg-[#080808] text-white selection:bg-[#ff5500]/30 selection:text-white relative font-sans">
+      {/* Subtle background glow */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]" 
-             style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#ff5500]/5 rounded-full blur-[180px]" />
+        <div className="absolute bottom-1/3 left-10 w-[500px] h-[500px] bg-[#ff5500]/3 rounded-full blur-[180px]" />
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-charcoal/90 backdrop-blur-xl py-4 border-b border-white/5' : 'bg-transparent py-6'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#080808]/95 backdrop-blur-xl py-3.5 border-b border-white/10 shadow-2xl' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <Logo />
-          <div className="flex items-center gap-8">
-            <div className="hidden md:flex gap-6 text-sm font-mono text-zinc-500">
-              <a href="#experience" className="hover:text-electric-blue transition-colors">01. EXP</a>
-              <a href="#competencies" className="hover:text-electric-blue transition-colors">02. SKILLS</a>
-              <a href="#projects" className="hover:text-electric-blue transition-colors">03. WORK</a>
-            </div>
+
+          {/* Nav Links */}
+          <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider uppercase">
+            <a href="#about" className="text-zinc-400 hover:text-[#ff5500] transition-colors font-medium">About</a>
+            <a href="#services" className="text-zinc-400 hover:text-[#ff5500] transition-colors font-medium">Services</a>
+            <a href="#experience" className="text-zinc-400 hover:text-[#ff5500] transition-colors font-medium">Experience</a>
+            <a href="#projects" className="text-zinc-400 hover:text-[#ff5500] transition-colors font-medium">Portfolio</a>
+            <a href="#contact" className="text-zinc-400 hover:text-[#ff5500] transition-colors font-medium">Contact</a>
+          </nav>
+
+          {/* Top Hire Me CTA */}
+          <div className="flex items-center gap-3">
             <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={scrollToContact}
-              className="px-6 py-2 rounded-full bg-electric-blue/10 border border-electric-blue/30 hover:bg-electric-blue hover:text-white transition-all duration-300 text-sm font-bold text-electric-blue"
+              className="px-6 py-2.5 rounded-lg bg-[#ff5500] hover:bg-[#e04a00] text-white text-xs font-bold font-mono tracking-wider uppercase transition-all shadow-lg shadow-[#ff5500]/25 cursor-pointer"
             >
-              Connect
+              Hire Me!
             </motion.button>
           </div>
         </div>
-      </nav>
+      </header>
 
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5 }}
-              className="absolute top-1/4 -left-20 w-96 h-96 bg-electric-blue/10 rounded-full blur-[120px]" 
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5, delay: 0.2 }}
-              className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px]" 
-            />
-            {/* Background Tech Image Overlay */}
-            <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2000" 
-                   alt="Tech Background" className="w-full h-full object-cover" />
-            </div>
-          </div>
-
+        <section className="relative min-h-[92vh] flex items-center pt-28 pb-16 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              
+              {/* Left Column: Headline & Intro */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
+                className="lg:col-span-7 space-y-8"
               >
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="mb-6 flex items-center gap-6"
-                >
-                  <div className="w-20 h-20 rounded-full border-2 border-electric-blue/50 flex items-center justify-center p-1 overflow-hidden relative shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-                    <img 
-                      src="https://i.postimg.cc/VL9NWQNY/image-3.jpg" 
-                      alt="Haile Shibru" 
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-electric-blue font-mono text-xs tracking-[0.5em] uppercase mb-2">Systems Professional</span>
-                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase whitespace-nowrap">Haile Shibru</h2>
-                  </div>
-                </motion.div>
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
-                  Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-500">Reliable</span> Networks<span className="text-electric-blue">.</span>
-                </h1>
-                <p className="text-xl text-zinc-400 mb-10 leading-relaxed max-w-xl">
-                  I bridge the gap between <span className="text-white font-medium">IT Infrastructure</span> and <span className="text-white font-medium">Modern Development</span>. Teaching practical tech while building dependable systems.
+                {/* Orange "Hello, I am" pill badge */}
+                <div className="inline-block">
+                  <span className="px-4 py-1.5 rounded-md bg-[#ff5500] text-white text-xs font-bold tracking-wide uppercase shadow-md shadow-[#ff5500]/30 inline-flex items-center gap-1.5">
+                    <span>Hello, I am</span>
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[0.9]">
+                    Mr. Haile Shibru<span className="text-[#ff5500]">.</span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl font-light text-zinc-300 leading-snug">
+                    A Professional <span className="text-white font-semibold">IT Instructor</span>, <span className="text-white font-semibold">Network Specialist</span> &amp; <span className="text-[#ff5500] font-semibold">Full-Stack Developer</span>.
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl font-light">
+                  Bridging the gap between robust computer network infrastructure, classroom technical mentorship, and modern cloud web application delivery in Addis Ababa, Ethiopia.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <motion.button 
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={scrollToContact}
-                    className="px-8 py-4 bg-electric-blue hover:bg-blue-600 text-white rounded-xl font-bold transition-all duration-300 flex items-center gap-2 group shadow-lg shadow-electric-blue/20"
-                  >
-                    Initialize Connection
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
+
+                {/* Primary Action Buttons */}
+                <div className="flex flex-wrap items-center gap-4 pt-2">
                   <motion.a 
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     href="https://drive.google.com/file/d/1nVvOSccMhEoKfG2mo2Mv05WKQmQ4Z18X/view?usp=drivesdk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold transition-all duration-300 border border-white/10 flex items-center gap-2"
+                    className="px-7 py-3.5 bg-[#ff5500] hover:bg-[#e04a00] text-white rounded-lg font-bold text-sm transition-all duration-200 flex items-center gap-2 shadow-lg shadow-[#ff5500]/25"
                   >
-                    <FileText className="w-5 h-5 text-electric-blue" />
-                    Download CV
+                    <Download className="w-4 h-4" />
+                    <span>Download CV</span>
                   </motion.a>
-                  <motion.a 
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="#experience"
-                    className="px-8 py-4 bg-white/5 hover:bg-white/10 text-zinc-400 rounded-xl font-bold transition-all duration-300 border border-white/10 flex items-center gap-2"
+
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={scrollToProjects}
+                    className="px-7 py-3.5 bg-[#121214] hover:bg-zinc-800 text-white rounded-lg font-bold text-sm transition-all duration-200 border border-white/15 hover:border-[#ff5500]/50 flex items-center gap-2 cursor-pointer"
                   >
-                    <Layers className="w-5 h-5" />
-                    Stack.log
-                  </motion.a>
+                    <span>My Work</span>
+                    <ArrowRight className="w-4 h-4 text-[#ff5500]" />
+                  </motion.button>
+
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={scrollToContact}
+                    className="px-6 py-3.5 bg-transparent hover:bg-white/5 text-zinc-400 hover:text-white rounded-lg text-sm font-mono transition-all flex items-center gap-2 cursor-pointer"
+                  >
+                    <span>Connect</span>
+                    <ChevronRight className="w-4 h-4 text-[#ff5500]" />
+                  </motion.button>
                 </div>
               </motion.div>
 
+              {/* Right Column: Hero Visual with Futuristic Wireframe Geometry */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="hidden lg:block"
+                className="lg:col-span-5 flex justify-center relative"
               >
-                <Terminal />
+                <div className="relative w-full max-w-md flex items-center justify-center">
+                  
+                  {/* Geometric Polygons & Wireframe Lines Overlay */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" viewBox="0 0 400 450" fill="none">
+                    <polygon 
+                      points="200,30 380,180 320,390 80,390 20,180" 
+                      stroke="rgba(255, 85, 0, 0.4)" 
+                      strokeWidth="1.5" 
+                      className="wireframe-poly"
+                    />
+                    <polygon 
+                      points="200,60 350,220 200,410 50,220" 
+                      stroke="rgba(255, 255, 255, 0.15)" 
+                      strokeWidth="1" 
+                    />
+                    <line x1="20,180" y1="180" x2="380" y2="180" stroke="rgba(255, 85, 0, 0.2)" strokeWidth="1" />
+                    <line x1="200,30" y1="30" x2="200" y2="410" stroke="rgba(255, 85, 0, 0.2)" strokeWidth="1" />
+                    
+                    {/* Accent Corner Dots */}
+                    <circle cx="200" cy="30" r="3" fill="#ff5500" />
+                    <circle cx="380" cy="180" r="3" fill="#ff5500" />
+                    <circle cx="320" cy="390" r="3" fill="#ff5500" />
+                    <circle cx="80" cy="390" r="3" fill="#ff5500" />
+                    <circle cx="20" cy="180" r="3" fill="#ff5500" />
+                  </svg>
+
+                  {/* Main Portrait Frame */}
+                  <div className="relative z-10 w-72 h-88 sm:w-80 sm:h-96 rounded-2xl overflow-hidden bg-[#0d0d0f] border-2 border-white/10 shadow-2xl shadow-[#ff5500]/10 group">
+                    <img 
+                      src="https://i.postimg.cc/VL9NWQNY/image-3.jpg" 
+                      alt="Haile Shibru" 
+                      className="w-full h-full object-cover object-top grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-80" />
+                    
+                    {/* Bottom overlay badge */}
+                    <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-[#080808]/90 border border-white/10 backdrop-blur-md flex items-center justify-between">
+                      <div>
+                        <div className="text-white font-bold text-xs uppercase tracking-wider">Haile Shibru</div>
+                        <div className="text-[#ff5500] font-mono text-[10px]">CS Graduate • Class of 2025</div>
+                      </div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                    </div>
+                  </div>
+
+                  {/* Ambient Orange Glow behind Portrait */}
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-[#ff5500]/20 to-transparent rounded-3xl blur-2xl -z-10" />
+                </div>
               </motion.div>
+            </div>
+
+            {/* Scroll Indicator at bottom of Hero */}
+            <div className="flex justify-center mt-12">
+              <a 
+                href="#about" 
+                aria-label="Scroll to about section"
+                className="w-7 h-11 rounded-full border-2 border-white/20 hover:border-[#ff5500] flex items-start justify-center p-1.5 transition-colors group cursor-pointer"
+              >
+                <motion.div 
+                  animate={{ y: [0, 14, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+                  className="w-1.5 h-2 rounded-full bg-[#ff5500]"
+                />
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Summary Section */}
-        <section className="py-32 border-y border-white/5 bg-zinc-900/20 relative">
+        {/* Tech Marquee */}
+        <TechMarquee />
+
+        {/* Section 01: About & Core Story (Deduplicated & Cleaned) */}
+        <section id="about" className="py-28 bg-[#0a0a0c] border-b border-white/5 relative">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              
+              {/* Left Column: Workstation visual + Experience Badge */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="relative"
+                className="lg:col-span-5 relative"
               >
-                <SectionTitle subtitle="00. IDENTITY">IT Instructor & Developer</SectionTitle>
-                
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="mb-8 relative z-10"
-                >
-                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full p-2 border-2 border-electric-blue/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] overflow-hidden relative group">
+                <div className="relative rounded-2xl overflow-hidden bg-[#121214] border border-white/10 p-3 shadow-2xl">
+                  <div className="rounded-xl overflow-hidden aspect-4/3 relative">
                     <img 
-                      src="https://i.postimg.cc/VL9NWQNY/image-3.jpg" 
-                      alt="Haile Shibru" 
-                      className="w-full h-full object-cover rounded-full"
+                      src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000" 
+                      alt="Development & Lab Workstation"
+                      className="w-full h-full object-cover grayscale contrast-125"
                     />
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span className="text-[10px] font-mono text-white text-center px-4">Professional Identity Verified</span>
+                    <div className="absolute inset-0 bg-[#ff5500]/10 mix-blend-color" />
+                  </div>
+
+                  {/* Floating Experience Badge */}
+                  <div className="absolute -bottom-4 -left-4 sm:bottom-6 sm:left-6 p-4 rounded-xl bg-[#080808] border-2 border-[#ff5500]/40 shadow-2xl flex items-center gap-4 z-20">
+                    <div className="text-3xl sm:text-4xl font-black text-[#ff5500] font-mono leading-none">
+                      06+
+                    </div>
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-300 font-bold leading-tight">
+                      Months<br /><span className="text-zinc-500 font-normal">Active Tech Teaching</span>
                     </div>
                   </div>
-                </motion.div>
-
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 0.02, x: 0 }}
-                  viewport={{ once: true }}
-                  className="absolute -top-10 -left-10 text-[10rem] font-black text-white pointer-events-none"
-                >
-                  BIO
-                </motion.div>
+                </div>
               </motion.div>
+
+              {/* Right Column: Narrative & Skill Progress Bars */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-lg text-zinc-400 leading-relaxed space-y-6 font-light"
+                className="lg:col-span-7 space-y-6"
               >
-                <p>
-                  As a <span className="text-white font-medium">Computer Science graduate</span>, I have dedicated my career to bridging the gap between theoretical knowledge and practical application. Currently serving as an IT Instructor, I guide degree and diploma students through the complexities of modern computing.
+                <SectionTitle subtitle="01. ABOUT MY BACKGROUND">
+                  Practical Journey &amp; Technical Mastery<span className="text-[#ff5500]">.</span>
+                </SectionTitle>
+
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
+                  Graduating with a Computer Science degree from <strong className="text-white font-semibold">Debre Tabor University (Class of 2025)</strong>, I specialize in the intersection of physical network infrastructure, enterprise troubleshooting, and high-impact digital systems.
                 </p>
-                <p>
-                  My background spans <span className="text-electric-blue font-medium">networking and system configuration</span>, field technical installations, and software troubleshooting. Whether I'm configuring a secure enterprise network or installing GPS tracking systems in the field, my focus remains on reliability and efficiency.
+
+                <p className="text-sm text-zinc-400 leading-relaxed font-light">
+                  Currently at <strong className="text-zinc-200">Debub Ethiopia College</strong>, I design practical laboratory coursework, training the next generation of engineers in Cisco switch/router configuration, diagnostic cabling, and software engineering principles.
                 </p>
-                <div className="pt-4 flex gap-4">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col"
-                  >
-                    <span className="text-white font-bold text-2xl">Addis Ababa</span>
-                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Location</span>
-                  </motion.div>
-                  <div className="w-px h-10 bg-white/10 mx-4" />
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="flex flex-col"
-                  >
-                    <span className="text-white font-bold text-xl leading-tight">Debre Tabor University</span>
-                    <span className="text-sm font-light text-zinc-400 block">CS Graduate - Class of 2025</span>
-                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest mt-1">Education</span>
-                  </motion.div>
-                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="pt-8"
-                >
-                  <motion.a 
-                    whileHover={{ x: 5 }}
-                    href="https://drive.google.com/file/d/1nVvOSccMhEoKfG2mo2Mv05WKQmQ4Z18X/view?usp=drivesdk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-electric-blue font-mono text-sm uppercase tracking-widest border-b border-electric-blue/30 pb-1 hover:border-electric-blue transition-all"
-                  >
-                    <Download className="w-4 h-4" />
-                    Preview Professional CV
-                  </motion.a>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <TechMarquee />
-
-        {/* Experience Section */}
-        <section id="experience" className="py-32">
-          <div className="max-w-7xl mx-auto px-6">
-            <SectionTitle subtitle="01. CAREER">Professional Experience</SectionTitle>
-            
-            <div className="relative mt-16 max-w-4xl mx-auto">
-              {/* Timeline Line */}
-              <motion.div 
-                initial={{ height: 0 }}
-                whileInView={{ height: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5 }}
-                className="absolute left-0 top-0 w-px timeline-line" 
-              />
-              
-              <div className="space-y-16">
-                {EXPERIENCE.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative pl-12"
-                  >
-                    {/* Timeline Dot */}
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 + (index * 0.1) }}
-                      className="absolute left-[-5px] top-2 w-[11px] h-[11px] rounded-full bg-charcoal border-2 border-electric-blue z-10" 
-                    />
-                    
-                    <motion.div 
-                      whileHover={{ x: 10 }}
-                      className="p-8 rounded-2xl bg-zinc-900/40 border border-white/5 glow-hover group"
-                    >
-                      <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
-                        <div>
-                          <h3 className="text-2xl font-bold text-white group-hover:text-electric-blue transition-colors">{item.title}</h3>
-                          <p className="text-zinc-500 font-mono text-sm uppercase tracking-wider">{item.company}</p>
-                        </div>
-                        <span className="px-4 py-1 rounded-full bg-electric-blue/10 text-electric-blue text-xs font-mono border border-electric-blue/20">
-                          {item.period}
-                        </span>
+                {/* Skill Progress Bars with Orange Fill */}
+                <div className="space-y-4 pt-3">
+                  {SKILL_BARS.map((skill, idx) => (
+                    <div key={idx} className="space-y-1.5">
+                      <div className="flex justify-between text-xs font-mono">
+                        <span className="text-zinc-200 font-semibold uppercase">{skill.label}</span>
+                        <span className="text-[#ff5500] font-bold">{skill.percentage}%</span>
                       </div>
-                      <ul className="space-y-4">
-                        {item.description.map((desc, i) => (
-                          <li key={i} className="flex items-start gap-3 text-zinc-400">
-                            <div className="w-1.5 h-1.5 rounded-full bg-electric-blue/40 mt-2 shrink-0" />
-                            <span className="text-sm leading-relaxed">{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
+                      <div className="w-full h-2 rounded-full bg-[#161618] overflow-hidden border border-white/5">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.percentage}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: idx * 0.1, ease: "easeOut" }}
+                          className="h-full bg-gradient-to-r from-[#ff5500] to-[#ff7733] rounded-full shadow-sm shadow-[#ff5500]/50"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
             </div>
           </div>
         </section>
 
-        {/* Competencies Section */}
-        <section id="competencies" className="py-32 bg-zinc-900/20">
+        {/* Section 02: Services & Core Competencies */}
+        <section id="services" className="py-28 bg-[#080808] relative">
           <div className="max-w-7xl mx-auto px-6">
-            <SectionTitle subtitle="02. STACK">Core Competencies</SectionTitle>
-            
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="w-2 h-2 rounded-full bg-[#ff5500]" />
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#ff5500] font-bold">
+                  02. SERVICES &amp; EXPERTISE
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+                Core Technical Offerings<span className="text-[#ff5500]">.</span>
+              </h2>
+              <p className="text-zinc-400 text-sm mt-3 font-light">
+                Enterprise networks, classroom IT mentorship, and full-stack cloud systems engineered with high reliability.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {COMPETENCIES.map((comp, index) => (
                 <motion.div
@@ -584,20 +497,32 @@ export default function App() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.08 }}
                   whileHover={{ y: -5 }}
-                  className="p-8 rounded-2xl bg-zinc-900/50 border border-white/5 glow-hover group relative overflow-hidden"
+                  className={`p-7 rounded-2xl border transition-all duration-300 group relative overflow-hidden flex flex-col justify-between ${
+                    comp.featured 
+                      ? 'bg-[#0f0f12] border-[#ff5500]/50 shadow-xl shadow-[#ff5500]/10' 
+                      : 'bg-[#0d0d0f] border-white/10 hover:border-[#ff5500]/40'
+                  }`}
                 >
-                  <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.1] transition-opacity">
-                    {React.cloneElement(comp.icon as React.ReactElement, { className: "w-24 h-24" })}
+                  {comp.featured && (
+                    <div className="absolute top-3 right-3 px-2 py-0.5 rounded bg-[#ff5500] text-white text-[9px] font-mono font-bold uppercase tracking-wider">
+                      Featured
+                    </div>
+                  )}
+
+                  <div>
+                    <div className="mb-5 p-3 rounded-xl bg-[#ff5500]/10 w-fit group-hover:bg-[#ff5500] group-hover:text-white transition-all duration-300">
+                      {comp.icon}
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#ff5500] transition-colors">
+                      {comp.title}
+                    </h3>
                   </div>
-                  <div className="mb-6 p-3 rounded-xl bg-electric-blue/10 w-fit group-hover:bg-electric-blue/20 transition-colors relative z-10">
-                    {comp.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 relative z-10">{comp.title}</h3>
-                  <div className="flex flex-wrap gap-2 relative z-10">
+
+                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5 mt-4">
                     {comp.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 rounded-md bg-white/5 text-[10px] font-mono text-zinc-500 border border-white/5 uppercase tracking-wider">
+                      <span key={i} className="px-2.5 py-1 rounded bg-white/5 text-[10px] font-mono text-zinc-400 border border-white/5 uppercase tracking-wider group-hover:border-[#ff5500]/20 transition-colors">
                         {tag}
                       </span>
                     ))}
@@ -608,224 +533,73 @@ export default function App() {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="py-32">
+        {/* Section 03: Experience */}
+        <section id="experience" className="py-28 bg-[#0a0a0c] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6">
-            <SectionTitle subtitle="03. OUTPUT">Featured Projects</SectionTitle>
+            <SectionTitle subtitle="03. CAREER MILESTONES">Professional Experience</SectionTitle>
             
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {PROJECTS.map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5"
-                >
-                  <div className="aspect-[16/10] overflow-hidden relative">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
-                    <a 
-                      href={project.link || "#"} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="absolute top-4 right-4 p-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-electric-blue hover:text-white"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-electric-blue" />
-                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.2em]">
-                        {project.category}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-electric-blue transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
-                      {project.description}
-                    </p>
-                    {project.tags && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tags.map((tag, i) => (
-                          <span key={i} className="px-2 py-0.5 rounded bg-electric-blue/5 border border-electric-blue/20 text-[9px] font-mono text-electric-blue uppercase tracking-wider">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <a 
-                      href={project.link || "#"} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs font-mono text-electric-blue opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0"
-                    >
-                      {project.link ? 'Live Demo' : 'View Project'} <ArrowRight className="w-3 h-3" />
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Impact Metrics */}
-        <section className="py-24 border-y border-white/5 bg-zinc-900/40 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-               style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px' }} />
-          
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-              {[
-                { val: "100+", label: "Students Taught" },
-                { val: "50+", label: "GPS Units Installed" },
-                { val: "3+", label: "Projects Deployed" }
-              ].map((metric, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <div className="text-7xl font-black text-white mb-2 tracking-tighter">{metric.val}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-electric-blue">{metric.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-32 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-electric-blue/5 rounded-full blur-[150px] pointer-events-none" />
-          
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+            <div className="relative mt-12 max-w-4xl mx-auto">
+              {/* Timeline Line in Flame Orange */}
+              <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: '100%' }}
                 viewport={{ once: true }}
-              >
-                <span className="font-mono text-xs text-electric-blue uppercase tracking-[0.5em] mb-6 block">READY TO CONNECT</span>
-                <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12 leading-[0.85]">
-                  Let's Build <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-600">Reliable</span> Systems Together<span className="text-electric-blue">.</span>
-                </h2>
-                
-                <div className="grid md:grid-cols-2 gap-6 mt-16">
-                  <motion.a 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="mailto:haileyesusshibru19@gmail.com"
-                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
+                transition={{ duration: 1.2 }}
+                className="absolute left-0 top-0 w-0.5 bg-gradient-to-b from-[#ff5500] via-[#ff7733] to-transparent" 
+              />
+              
+              <div className="space-y-12">
+                {EXPERIENCE.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="relative pl-10 sm:pl-12"
                   >
-                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
-                      <Mail className="w-8 h-8 text-electric-blue" />
-                    </div>
-                    <div className="text-left overflow-hidden">
-                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Email.protocol</div>
-                      <div className="font-bold text-lg break-all">haileyesusshibru19@gmail.com</div>
-                    </div>
-                  </motion.a>
-                  
-                  <motion.a 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="tel:+251933615101"
-                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
-                  >
-                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
-                      <Phone className="w-8 h-8 text-electric-blue" />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Phone.dial</div>
-                      <div className="font-bold text-lg">+251 933 615 101</div>
-                    </div>
-                  </motion.a>
-
-                  <motion.a 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="https://www.linkedin.com/in/haile-shibru-763418327"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
-                  >
-                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
-                      <Linkedin className="w-8 h-8 text-electric-blue" />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Social.link</div>
-                      <div className="font-bold text-lg">LinkedIn Profile</div>
-                    </div>
-                  </motion.a>
-
-                  <motion.a 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="https://github.com/haile199105"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-6 p-8 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-electric-blue/50 transition-all group"
-                  >
-                    <div className="p-4 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue/20 transition-colors">
-                      <Github className="w-8 h-8 text-electric-blue" />
-                    </div>
-                    <div className="text-left">
-                      <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Code.repo</div>
-                      <div className="font-bold text-lg">GitHub Profile</div>
-                    </div>
-                  </motion.a>
-                </div>
-
-                <div className="flex justify-center gap-8 mt-16">
-                  {[
-                    { icon: <Linkedin />, url: "https://www.linkedin.com/in/haile-shibru-763418327", label: "LinkedIn" },
-                    { icon: <Github />, url: "https://github.com/haile199105", label: "GitHub" }
-                  ].map((social, i) => (
-                    <motion.a 
-                      key={i}
-                      whileHover={{ y: -5 }}
-                      href={social.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-zinc-500 hover:text-white transition-all group"
-                    >
-                      <div className="p-3 rounded-full border border-white/5 group-hover:border-electric-blue/50 group-hover:text-electric-blue transition-all">
-                        {social.icon}
+                    {/* Timeline Dot in Orange */}
+                    <div className="absolute left-[-6px] top-2 w-[13px] h-[13px] rounded-full bg-[#080808] border-2 border-[#ff5500] shadow-[0_0_10px_#ff5500] z-10" />
+                    
+                    <div className="p-7 rounded-2xl bg-[#0d0d0f] border border-white/10 glow-hover group">
+                      <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-white group-hover:text-[#ff5500] transition-colors">{item.title}</h3>
+                          <p className="text-zinc-400 font-mono text-xs uppercase tracking-wider mt-0.5">{item.company}</p>
+                        </div>
+                        <span className="px-3 py-1 rounded-full bg-[#ff5500]/10 text-[#ff5500] text-xs font-mono font-semibold border border-[#ff5500]/30">
+                          {item.period}
+                        </span>
                       </div>
-                      <span className="font-mono text-xs uppercase tracking-widest hidden sm:inline">{social.label}</span>
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
+                      <ul className="space-y-2.5">
+                        {item.description.map((desc, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-zinc-400 text-xs sm:text-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#ff5500] mt-1.5 shrink-0" />
+                            <span className="leading-relaxed">{desc}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Section 04: Projects */}
+        <ProjectSection />
+
+        {/* Section 05: Impact Metrics */}
+        <ImpactMetrics />
+
+        {/* Section 06: Contact */}
+        <ContactSection />
       </main>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[10px] text-zinc-600 font-mono uppercase tracking-[0.3em]">
-            &copy; {new Date().getFullYear()} Haile Shibru // System Version 2.0.0
-          </div>
-          <div className="flex gap-8 text-[10px] text-zinc-600 font-mono uppercase tracking-[0.3em]">
-            <span>Addis Ababa, ET</span>
-            <span>Network Specialist</span>
-            <span>Developer</span>
-          </div>
-        </div>
-      </footer>
+      <FooterSection />
     </div>
   );
 }
+

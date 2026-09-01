@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="50%" stop-color="#080e1a"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cardGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(59,130,246,0.07)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  
+  <!-- Ambient glow circle -->
+  <circle cx="400" cy="180" r="160" fill="#3b82f6" opacity="0.12" filter="blur(40px)"/>
+  
+  <!-- Top App Window Frame -->
+  <g transform="translate(60, 45)">
+    <!-- Window Outline -->
+    <rect width="680" height="410" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- Title Bar -->
+    <rect width="680" height="44" rx="16" fill="#1e293b"/>
+    <rect y="30" width="680" height="14" fill="#1e293b"/>
+    <circle cx="25" cy="22" r="6" fill="#ef4444" opacity="0.8"/>
+    <circle cx="45" cy="22" r="6" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="65" cy="22" r="6" fill="#10b981" opacity="0.8"/>
+    <rect x="220" y="12" width="240" height="20" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="340" y="26" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">smartclass-pro1.vercel.app</text>
+    
+    <!-- Sidebar -->
+    <rect x="1" y="44" width="160" height="365" fill="#0b1120"/>
+    <rect x="16" y="65" width="128" height="28" rx="6" fill="#3b82f6" opacity="0.2"/>
+    <text x="45" y="83" fill="#60a5fa" font-family="sans-serif" font-size="12" font-weight="bold">Dashboard</text>
+    <circle cx="30" cy="79" r="4" fill="#3b82f6"/>
+    
+    <text x="45" y="125" fill="#64748b" font-family="sans-serif" font-size="12">Students Directory</text>
+    <text x="45" y="160" fill="#64748b" font-family="sans-serif" font-size="12">Subject Grades</text>
+    <text x="45" y="195" fill="#64748b" font-family="sans-serif" font-size="12">Attendance Logs</text>
+    <text x="45" y="230" fill="#64748b" font-family="sans-serif" font-size="12">Reports &amp; GPA</text>
+    <text x="45" y="265" fill="#64748b" font-family="sans-serif" font-size="12">Admin Settings</text>
+    
+    <!-- Main Content Area -->
+    <g transform="translate(180, 60)">
+      <!-- Header Banner -->
+      <rect width="480" height="60" rx="10" fill="url(#cardGlow)" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="28" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">EduTrack Pro — Institutional Academic Suite</text>
+      <text x="20" y="48" fill="#38bdf8" font-family="monospace" font-size="11">● Active Term 2025 // Status: Connected to Firestore DB</text>
+      
+      <!-- Metric Cards -->
+      <g transform="translate(0, 75)">
+        <!-- Metric 1 -->
+        <rect width="150" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="14" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="bold">ENROLLED STUDENTS</text>
+        <text x="14" y="52" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="800">1,248</text>
+        <text x="85" y="52" fill="#10b981" font-family="monospace" font-size="11">+12%</text>
+        
+        <!-- Metric 2 -->
+        <rect x="165" width="150" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="179" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="bold">AVG ATTENDANCE</text>
+        <text x="179" y="52" fill="#3b82f6" font-family="sans-serif" font-size="22" font-weight="800">96.4%</text>
+        
+        <!-- Metric 3 -->
+        <rect x="330" width="150" height="70" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="344" y="24" fill="#94a3b8" font-family="sans-serif" font-size="10" font-weight="bold">DEPARTMENTS</text>
+        <text x="344" y="52" fill="#a855f7" font-family="sans-serif" font-size="22" font-weight="800">8 Active</text>
+      </g>
+      
+      <!-- Data Table Mockup -->
+      <g transform="translate(0, 160)">
+        <rect width="480" height="175" rx="8" fill="#0b1120" stroke="#1e293b" stroke-width="1"/>
+        <!-- Table Header -->
+        <rect width="480" height="28" rx="8" fill="#1e293b"/>
+        <text x="15" y="18" fill="#94a3b8" font-family="monospace" font-size="10">STUDENT NAME</text>
+        <text x="160" y="18" fill="#94a3b8" font-family="monospace" font-size="10">ID / SECTION</text>
+        <text x="270" y="18" fill="#94a3b8" font-family="monospace" font-size="10">GPA / GRADE</text>
+        <text x="380" y="18" fill="#94a3b8" font-family="monospace" font-size="10">STATUS</text>
+        
+        <!-- Row 1 -->
+        <text x="15" y="54" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="500">Abebe Kebede</text>
+        <text x="160" y="54" fill="#64748b" font-family="monospace" font-size="11">CS-2025-014</text>
+        <text x="270" y="54" fill="#10b981" font-family="monospace" font-size="11" font-weight="bold">3.88 [A]</text>
+        <rect x="380" y="42" width="75" height="18" rx="4" fill="#065f46"/>
+        <text x="417" y="54" fill="#34d399" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">VERIFIED</text>
+        
+        <!-- Row 2 -->
+        <text x="15" y="88" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="500">Bethlehem Tadesse</text>
+        <text x="160" y="88" fill="#64748b" font-family="monospace" font-size="11">CS-2025-089</text>
+        <text x="270" y="88" fill="#10b981" font-family="monospace" font-size="11" font-weight="bold">3.95 [A+]</text>
+        <rect x="380" y="76" width="75" height="18" rx="4" fill="#065f46"/>
+        <text x="417" y="88" fill="#34d399" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">VERIFIED</text>
+
+        <!-- Row 3 -->
+        <text x="15" y="122" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="500">Dawit Hailemariam</text>
+        <text x="160" y="122" fill="#64748b" font-family="monospace" font-size="11">CS-2025-102</text>
+        <text x="270" y="122" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold">3.62 [B+]</text>
+        <rect x="380" y="110" width="75" height="18" rx="4" fill="#1e3a8a"/>
+        <text x="417" y="122" fill="#60a5fa" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">ACTIVE</text>
+        
+        <!-- Row 4 -->
+        <text x="15" y="156" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="500">Hanna Mengistu</text>
+        <text x="160" y="156" fill="#64748b" font-family="monospace" font-size="11">CS-2025-121</text>
+        <text x="270" y="156" fill="#10b981" font-family="monospace" font-size="11" font-weight="bold">3.78 [A-]</text>
+        <rect x="380" y="144" width="75" height="18" rx="4" fill="#065f46"/>
+        <text x="417" y="156" fill="#34d399" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">VERIFIED</text>
+      </g>
+    </g>
+  </g>
+</svg>

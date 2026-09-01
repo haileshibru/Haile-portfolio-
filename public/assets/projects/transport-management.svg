@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061a14"/>
+      <stop offset="50%" stop-color="#04120e"/>
+      <stop offset="100%" stop-color="#020806"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(16,185,129,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  
+  <circle cx="400" cy="180" r="160" fill="#10b981" opacity="0.12" filter="blur(40px)"/>
+  
+  <g transform="translate(60, 45)">
+    <rect width="680" height="410" rx="16" fill="#091814" stroke="#134e4a" stroke-width="1.5"/>
+    
+    <rect width="680" height="44" rx="16" fill="#0f2d26"/>
+    <rect y="30" width="680" height="14" fill="#0f2d26"/>
+    <circle cx="25" cy="22" r="6" fill="#ef4444" opacity="0.8"/>
+    <circle cx="45" cy="22" r="6" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="65" cy="22" r="6" fill="#10b981" opacity="0.8"/>
+    <rect x="180" y="12" width="320" height="20" rx="6" fill="#091814" stroke="#134e4a" stroke-width="1"/>
+    <text x="340" y="26" fill="#6ee7b7" font-family="monospace" font-size="11" text-anchor="middle">transport-management-system-mocha.vercel.app</text>
+    
+    <g transform="translate(30, 65)">
+      <!-- Top banner -->
+      <rect width="620" height="60" rx="10" fill="#0b241e" stroke="#134e4a" stroke-width="1"/>
+      <text x="20" y="28" fill="#ffffff" font-family="sans-serif" font-size="16" font-weight="bold">Bus Transit Operations &amp; Route Logistics</text>
+      <text x="20" y="48" fill="#10b981" font-family="monospace" font-size="11">● Active Fleet: 24 Buses // 12 Active Routes // Dispatch Online</text>
+      
+      <!-- Metrics row -->
+      <g transform="translate(0, 75)">
+        <rect width="140" height="65" rx="8" fill="#0f2d26" stroke="#134e4a" stroke-width="1"/>
+        <text x="14" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="9" font-weight="bold">ACTIVE BUSES</text>
+        <text x="14" y="48" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="bold">24 / 28</text>
+        
+        <rect x="160" width="140" height="65" rx="8" fill="#0f2d26" stroke="#134e4a" stroke-width="1"/>
+        <text x="174" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="9" font-weight="bold">DAILY PASSENGERS</text>
+        <text x="174" y="48" fill="#34d399" font-family="sans-serif" font-size="20" font-weight="bold">3,850</text>
+        
+        <rect x="320" width="140" height="65" rx="8" fill="#0f2d26" stroke="#134e4a" stroke-width="1"/>
+        <text x="334" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="9" font-weight="bold">ON-TIME RATE</text>
+        <text x="334" y="48" fill="#6ee7b7" font-family="sans-serif" font-size="20" font-weight="bold">98.2%</text>
+
+        <rect x="480" width="140" height="65" rx="8" fill="#0f2d26" stroke="#134e4a" stroke-width="1"/>
+        <text x="494" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="9" font-weight="bold">DISPATCH QUEUE</text>
+        <text x="494" y="48" fill="#fcd34d" font-family="sans-serif" font-size="20" font-weight="bold">Optimal</text>
+      </g>
+      
+      <!-- Route Table -->
+      <g transform="translate(0, 155)">
+        <rect width="620" height="175" rx="8" fill="#04120e" stroke="#134e4a" stroke-width="1"/>
+        <rect width="620" height="28" rx="8" fill="#0f2d26"/>
+        <text x="15" y="18" fill="#a7f3d0" font-family="monospace" font-size="10">ROUTE ID</text>
+        <text x="130" y="18" fill="#a7f3d0" font-family="monospace" font-size="10">ORIGIN ➔ DESTINATION</text>
+        <text x="330" y="18" fill="#a7f3d0" font-family="monospace" font-size="10">ASSIGNED BUS</text>
+        <text x="460" y="18" fill="#a7f3d0" font-family="monospace" font-size="10">DEPARTURE</text>
+        <text x="550" y="18" fill="#a7f3d0" font-family="monospace" font-size="10">STATUS</text>
+        
+        <text x="15" y="52" fill="#ffffff" font-family="sans-serif" font-size="11">RT-101</text>
+        <text x="130" y="52" fill="#e2e8f0" font-family="sans-serif" font-size="11">Megenagna ➔ Piassa</text>
+        <text x="330" y="52" fill="#6ee7b7" font-family="monospace" font-size="11">Bus #14 (45 Seats)</text>
+        <text x="460" y="52" fill="#cbd5e1" font-family="monospace" font-size="11">08:15 AM</text>
+        <text x="550" y="52" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="bold">ON ROUTE</text>
+
+        <text x="15" y="86" fill="#ffffff" font-family="sans-serif" font-size="11">RT-104</text>
+        <text x="130" y="86" fill="#e2e8f0" font-family="sans-serif" font-size="11">Bole ➔ Tor Hailoch</text>
+        <text x="330" y="86" fill="#6ee7b7" font-family="monospace" font-size="11">Bus #09 (52 Seats)</text>
+        <text x="460" y="86" fill="#cbd5e1" font-family="monospace" font-size="11">08:30 AM</text>
+        <text x="550" y="86" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="bold">ON ROUTE</text>
+
+        <text x="15" y="120" fill="#ffffff" font-family="sans-serif" font-size="11">RT-108</text>
+        <text x="130" y="120" fill="#e2e8f0" font-family="sans-serif" font-size="11">Mexico ➔ Kality Terminal</text>
+        <text x="330" y="120" fill="#6ee7b7" font-family="monospace" font-size="11">Bus #22 (60 Seats)</text>
+        <text x="460" y="120" fill="#cbd5e1" font-family="monospace" font-size="11">08:45 AM</text>
+        <text x="550" y="120" fill="#fcd34d" font-family="sans-serif" font-size="10" font-weight="bold">BOARDING</text>
+      </g>
+    </g>
+  </g>
+</svg>

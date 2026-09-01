@@ -1,0 +1,231 @@
+import { ProjectData } from '../types/project';
+
+export const PROJECTS: ProjectData[] = [
+  {
+    id: 'edutrack-pro',
+    title: 'EduTrack Pro – Student Management System',
+    shortTitle: 'EduTrack Pro',
+    category: 'Education Technology / Full-Stack Web Application',
+    categoryGroup: 'education',
+    description: 'A comprehensive student management platform designed to help schools manage students, academic records, grades, subjects, attendance, and administrative workflows from a single unified system.',
+    longDescription: 'EduTrack Pro is a full-stack educational management solution engineered to modernize institutional academic tracking. It integrates student profiling, curriculum and subject mapping, automated grade point calculation, attendance logging, and printable analytical reports with granular role-based authentication for administrators and teachers.',
+    problem: 'Schools and educational departments in emerging environments struggle with fragmented paper record systems, error-prone manual GPA calculations, and lack of real-time visibility into attendance trends.',
+    solution: 'Designed and deployed a centralized cloud-backed application providing high-availability teacher portals, automated grade compute pipelines, student academic histories, and one-click printable report cards.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Firebase',
+      'Firestore',
+      'Express',
+      'Tailwind CSS'
+    ],
+    keyFeatures: [
+      'Comprehensive student profile and enrollment directory',
+      'Granular role-based access control (Admin, Instructor, Staff)',
+      'Automated grade calculation and subject gradebook',
+      'Daily attendance tracking and reporting metrics',
+      'Printable academic transcripts and summary reports',
+      'Centralized administrative dashboard with live statistics',
+      'Secure Firebase authentication & Firestore rule enforcement'
+    ],
+    role: 'Lead Full-Stack Developer & System Architect',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/edutrack.svg',
+    accentColor: '#3b82f6',
+    liveUrl: 'https://smartclass-pro1.vercel.app',
+    githubUrl: 'https://github.com/haile199105/student-management-system',
+    featured: true,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  },
+  {
+    id: 'digital-ceremony',
+    title: 'Digital Ceremony – Wishing & Memory Platform',
+    shortTitle: 'Digital Ceremony',
+    category: 'Full-Stack Web Application / Social & Event Technology',
+    categoryGroup: 'social',
+    description: 'A private digital ceremony platform where organizers create custom celebration pages with QR codes for guests to leave live wishes, digital signatures, and photo uploads, with automated memory package compilation.',
+    longDescription: 'Digital Ceremony transforms how celebrations preserve timeless memories. Supporting weddings, graduations, anniversaries, birthdays, baby showers, engagements, and memorials, it enables hosts to generate secure ceremony portals with dynamic QR codes. Attendees contribute real-time blessings and photo memories, while organizers can moderate submissions and export comprehensive PDF keepsakes and ZIP packages.',
+    problem: 'Traditional physical guestbooks are easily lost or damaged, exclude remote well-wishers, and cannot capture high-resolution photo contributions or voice memories.',
+    solution: 'Engineered a full-featured multimedia keepsake platform with real-time Supabase database synchronization, cloud media bucket storage, live event feeds, and client/server PDF memory book compilation.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Supabase',
+      'PostgreSQL',
+      'Supabase Storage',
+      'PDF-lib',
+      'JSZip',
+      'QR Generation'
+    ],
+    keyFeatures: [
+      'Private ceremony URLs with instant dynamic QR code sharing',
+      'Live guest wishing board with digital handwriting signatures',
+      'High-resolution multi-photo upload with Supabase Storage',
+      'Multi-occasion presets (Weddings, Graduations, Anniversaries, Memorials)',
+      'Secure organizer authentication & live content moderation',
+      'Automated PDF memory album & batch ZIP media export',
+      'Responsive, touch-friendly mobile interface for on-site guests'
+    ],
+    role: 'Full-Stack Engineer & Product Designer',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/digital-ceremony.svg',
+    accentColor: '#8b5cf6',
+    liveUrl: 'https://digital-ceremony-platform.vercel.app',
+    githubUrl: 'https://github.com/haile199105/Digital-Ceremony-Platform',
+    featured: true,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  },
+  {
+    id: 'transport-management',
+    title: 'Bus Transport Management System',
+    shortTitle: 'Transport Management',
+    category: 'Transportation Management / Web Application',
+    categoryGroup: 'transport',
+    description: 'A web-based transport management application designed to organize and coordinate bus transportation operations, route logistics, fleet manifests, and dispatch through a centralized digital interface.',
+    longDescription: 'Designed to streamline transit operations, the Bus Transport Management System provides fleet coordinators with real-time route assignment, passenger capacity management, driver scheduling, and trip log verification to ensure punctuality and operational accountability across municipal and private bus networks.',
+    problem: 'Bus dispatchers frequently contend with conflicting trip sheets, lack of consolidated fleet availability status, and manual paper ticketing inconsistencies.',
+    solution: 'Built a responsive web dashboard centralizing route schedules, vehicle status tracking, driver rosters, and operational transit logs in an easy-to-use operator interface.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Express'
+    ],
+    keyFeatures: [
+      'Centralized bus fleet registry and operational status',
+      'Route management with stop scheduling and timing windows',
+      'Driver assignment and transit manifest management',
+      'Ticketing overview and seat capacity monitoring',
+      'Responsive operations panel optimized for desktop and mobile dispatchers'
+    ],
+    role: 'Frontend & Systems Developer',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/transport-management.svg',
+    accentColor: '#10b981',
+    liveUrl: 'https://transport-management-system-mocha.vercel.app',
+    githubUrl: 'https://github.com/haile199105/transport-management-system-',
+    featured: false,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  },
+  {
+    id: 'professional-hub',
+    title: 'Professional Hub',
+    shortTitle: 'Professional Hub',
+    category: 'Career Technology / Professional Platform',
+    categoryGroup: 'career',
+    description: 'A bilingual (English & Amharic) career platform providing structured professional tools including CV engineering, LinkedIn optimization, tutoring services, and AI proficiency coaching.',
+    longDescription: 'Professional Hub connects aspiring professionals and university graduates with 8 high-impact career services. Featuring bilingual localization, service booking pipelines, resume formatting guides, and Google Gemini AI assistance, it equips candidates to compete effectively in modern technical and corporate markets.',
+    problem: 'Graduating students and job seekers in East Africa face significant barriers finding culturally tailored career coaching, ATS-compliant CV templates, and guidance on integrating AI into their daily workflow.',
+    solution: 'Created an accessible, high-performance web platform featuring interactive service catalogs, Amharic-English bilingual switching, consultation request intake, and AI career coaching integration.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS',
+      'Google Gemini',
+      'Express',
+      'Motion'
+    ],
+    keyFeatures: [
+      'Bilingual interface with instant English and Amharic toggling',
+      '8 specialized service tracks (CV Writing, LinkedIn, Tutoring, AI Tools)',
+      'Interactive service booking and consultation intake flow',
+      'Google Gemini AI career advisory & CV evaluation assistant',
+      'Smooth Motion layout animations and high-contrast dark theme'
+    ],
+    role: 'Lead Creator & Full-Stack Developer',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/professional-hub.svg',
+    accentColor: '#3b82f6',
+    liveUrl: 'https://professional-hub-two.vercel.app',
+    githubUrl: 'https://github.com/haile199105/Professional-Hub',
+    featured: false,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  },
+  {
+    id: 'story-of-haile',
+    title: 'Story of Haile',
+    shortTitle: 'Story of Haile',
+    category: 'Personal Storytelling / AI Web Application',
+    categoryGroup: 'career',
+    description: 'A personal storytelling and memoir web application exploring digital narrative presentation, authentication, database-backed content, media storage, and AI-assisted reader interactions.',
+    longDescription: 'Story of Haile delivers an interactive digital memoir platform detailing resilience, perseverance through hardship, and rising through faith and education. Incorporating Supabase authentication, cloud database chapters, and an AI conversational companion powered by Google Gemini, the platform brings biographical storytelling to life.',
+    problem: 'Traditional print memoirs provide a static, one-way reading experience without options for contextual reader exploration or interactive reflection.',
+    solution: 'Architected an engaging digital reading platform with chapter bookmarking, secure authenticated commenting, cloud storage for historical photos, and conversational AI for guided reader inquiries.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Supabase',
+      'Google Gemini',
+      'Express',
+      'Tailwind CSS'
+    ],
+    keyFeatures: [
+      'Chapter-based interactive memoir reading experience',
+      'Supabase database integration with user authentication',
+      'Google Gemini-powered conversational narrative guide',
+      'Media gallery with cloud-stored archival photography',
+      'Eye-safe typography and immersive reading dark mode'
+    ],
+    role: 'Full-Stack Developer & Author',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/story.svg',
+    accentColor: '#f59e0b',
+    liveUrl: 'https://story-two-self.vercel.app',
+    githubUrl: 'https://github.com/haile199105/Story',
+    featured: false,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  },
+  {
+    id: 'digital-signboard',
+    title: 'Digital Signboard',
+    shortTitle: 'Digital Signboard',
+    category: 'Digital Display / Web Application',
+    categoryGroup: 'display',
+    description: 'A web-based digital signage application engineered for educational campuses, offices, and venues to broadcast real-time announcements, schedules, and alerts through a responsive web interface.',
+    longDescription: 'Digital Signboard provides a lightweight, resilient web application for managing dynamic public displays. With automated carousel transitions, high-contrast layouts for maximum readability at distance, and instantaneous broadcast capabilities, it modernizes campus and institutional communications.',
+    problem: 'Institutions waste time and resources printing paper notices that are quickly outdated and difficult to update in emergencies.',
+    solution: 'Engineered a zero-lag, fullscreen digital display engine with customizable message boards, urgent ticker alerts, and scheduled slide transitions.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Tailwind CSS'
+    ],
+    keyFeatures: [
+      'High-contrast fullscreen display mode for public monitors',
+      'Real-time announcement scheduling and carousel rotations',
+      'Urgent ticker alerts for emergency and campus-wide bulletins',
+      'Modular layout widgets for time, date, notices, and media',
+      'Zero-dependency fast rendering optimized for low-power display hardware'
+    ],
+    role: 'Frontend Developer',
+    status: 'Completed / Deployed',
+    image: '/assets/projects/digital-signboard.svg',
+    accentColor: '#06b6d4',
+    liveUrl: 'https://digital-signboard-psi.vercel.app',
+    githubUrl: 'https://github.com/haile199105/Digital-signboard-',
+    featured: false,
+    builtBy: 'Haile Shibru',
+    releaseYear: '2025'
+  }
+];
+
+export const FILTER_OPTIONS: { label: string; value: string }[] = [
+  { label: 'All Projects', value: 'all' },
+  { label: 'Education Tech', value: 'education' },
+  { label: 'Social & Events', value: 'social' },
+  { label: 'Transport Logistics', value: 'transport' },
+  { label: 'Career & AI', value: 'career' },
+  { label: 'Display & Signage', value: 'display' }
+];

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041822"/>
+      <stop offset="50%" stop-color="#020e14"/>
+      <stop offset="100%" stop-color="#010609"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(6,182,212,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  <circle cx="400" cy="180" r="160" fill="#06b6d4" opacity="0.12" filter="blur(40px)"/>
+  
+  <g transform="translate(60, 45)">
+    <rect width="680" height="410" rx="16" fill="#05151e" stroke="#0e7490" stroke-width="1.5"/>
+    
+    <rect width="680" height="44" rx="16" fill="#083344"/>
+    <rect y="30" width="680" height="14" fill="#083344"/>
+    <circle cx="25" cy="22" r="6" fill="#ef4444" opacity="0.8"/>
+    <circle cx="45" cy="22" r="6" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="65" cy="22" r="6" fill="#10b981" opacity="0.8"/>
+    <rect x="200" y="12" width="280" height="20" rx="6" fill="#05151e" stroke="#0e7490" stroke-width="1"/>
+    <text x="340" y="26" fill="#67e8f9" font-family="monospace" font-size="11" text-anchor="middle">digital-signboard-psi.vercel.app</text>
+    
+    <g transform="translate(30, 65)">
+      <!-- Top Announcement Board -->
+      <rect width="620" height="95" rx="10" fill="#0e3f52" stroke="#06b6d4" stroke-width="1"/>
+      <rect x="15" y="15" width="100" height="24" rx="4" fill="#dc2626"/>
+      <text x="65" y="31" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">LIVE ALERT</text>
+      <text x="125" y="32" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="bold">Midterm Examination Schedule Released // Lab 3 Maintenance Notice</text>
+      
+      <text x="15" y="70" fill="#a5f3fc" font-family="monospace" font-size="12">Campus Network: Online • 10:45 AM • Addis Ababa Campus Display Unit #01</text>
+
+      <!-- 3 Column Announcement Tiles -->
+      <g transform="translate(0, 110)">
+        <rect width="195" height="200" rx="8" fill="#082836" stroke="#0e7490" stroke-width="1"/>
+        <rect width="195" height="30" rx="8" fill="#0c4a6e"/>
+        <text x="15" y="20" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="bold">📅 Academic Timetable</text>
+        <text x="15" y="55" fill="#e0f2fe" font-family="sans-serif" font-size="11" font-weight="bold">CS-302 Networking</text>
+        <text x="15" y="72" fill="#7dd3fc" font-family="monospace" font-size="10">Room 402 • 02:00 PM</text>
+        <text x="15" y="105" fill="#e0f2fe" font-family="sans-serif" font-size="11" font-weight="bold">CS-401 System Design</text>
+        <text x="15" y="122" fill="#7dd3fc" font-family="monospace" font-size="10">Lab 1 • 04:00 PM</text>
+        <text x="15" y="155" fill="#e0f2fe" font-family="sans-serif" font-size="11" font-weight="bold">IT Workshop</text>
+        <text x="15" y="172" fill="#7dd3fc" font-family="monospace" font-size="10">Auditorium • Tomorrow</text>
+
+        <rect x="212" width="195" height="200" rx="8" fill="#082836" stroke="#0e7490" stroke-width="1"/>
+        <rect x="212" width="195" height="30" rx="8" fill="#0c4a6e"/>
+        <text x="227" y="20" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="bold">📢 Campus News</text>
+        <text x="227" y="55" fill="#e0f2fe" font-family="sans-serif" font-size="11" font-weight="bold">Tech Innovation Expo</text>
+        <text x="227" y="75" fill="#94a3b8" font-family="sans-serif" font-size="10">Student registration open for annual tech showcase.</text>
+        <text x="227" y="120" fill="#e0f2fe" font-family="sans-serif" font-size="11" font-weight="bold">Library Hours Extended</text>
+        <text x="227" y="140" fill="#94a3b8" font-family="sans-serif" font-size="10">Open until 10:00 PM throughout exam weeks.</text>
+
+        <rect x="425" width="195" height="200" rx="8" fill="#082836" stroke="#0e7490" stroke-width="1"/>
+        <rect x="425" width="195" height="30" rx="8" fill="#0c4a6e"/>
+        <text x="440" y="20" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="bold">⛅ Live Weather &amp; Time</text>
+        <text x="537" y="75" fill="#ffffff" font-family="sans-serif" font-size="28" font-weight="800" text-anchor="middle">24°C</text>
+        <text x="537" y="95" fill="#67e8f9" font-family="sans-serif" font-size="11" text-anchor="middle">Partly Cloudy • Addis Ababa</text>
+        <rect x="445" y="125" width="155" height="50" rx="6" fill="#0c4a6e"/>
+        <text x="522" y="146" fill="#a5f3fc" font-family="monospace" font-size="10" text-anchor="middle">DISPLAY SYNC</text>
+        <text x="522" y="162" fill="#34d399" font-family="monospace" font-size="10" text-anchor="middle">● Refresh: 30s</text>
+      </g>
+    </g>
+  </g>
+</svg>
