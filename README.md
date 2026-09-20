@@ -104,7 +104,7 @@ The portfolio is deployed on Vercel.
 - Phone: +251 933 615 101
 - LinkedIn: https://www.linkedin.com/in/haile-shibru-763418327
 - Portfolio: https://haile-portfolio-theta.vercel.app/
-- GitHub: https://github.com/haile199105
+- GitHub: https://github.com/haileshibru
 
 ## Purpose
 
